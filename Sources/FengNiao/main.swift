@@ -7,7 +7,9 @@ let cli = CommandLineKit.CommandLine()
 let projectOption = StringOption(shortFlag: "p", longFlag: "project",
                             helpMessage: "Path to the project.")
 let resourceExtensionOption = MultiStringOption(shortFlag: "r", longFlag: "resource-extensions",
-                          helpMessage: "Extensions to search.")
+                                                helpMessage: "Extensions to search.")
+let excludedPathsOption = MultiStringOption(shortFlag: "e", longFlag: "excluded-paths",
+                          helpMessage: "Excluded paths not to search in.")
 
 let fileExtension = MultiStringOption(shortFlag: "f", longFlag: "file-extensions", helpMessage: "File extensions to search with")
 
@@ -47,3 +49,4 @@ if help.value {
 let project = projectOption.value ?? "."
 let resourceExtensions = resourceExtensionOption.value ?? ["png", "jpg", "imageset"]
 let fileExtensions = fileExtension.value ?? ["swift", "m", "mm", "xib", "storyboard"]
+let excludedPath = excludedPathsOption.value ?? []
